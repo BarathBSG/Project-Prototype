@@ -284,6 +284,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 6415499556334281689, guid: 9a8e41967bc72454bac3742c942c9473, type: 3}
       insertIndex: -1
       addedObject: {fileID: 20914835}
+    - targetCorrespondingSourceObject: {fileID: 3835656371640308768, guid: 9a8e41967bc72454bac3742c942c9473, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1157673951}
   m_SourcePrefab: {fileID: 100100000, guid: 9a8e41967bc72454bac3742c942c9473, type: 3}
 --- !u!1001 &188957509
 PrefabInstance:
@@ -354,6 +357,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 8926141046239171556, guid: 1c05f7d089230664eaaf2a6aa46c3293, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1741420324}
+    - targetCorrespondingSourceObject: {fileID: 1716599351703249949, guid: 1c05f7d089230664eaaf2a6aa46c3293, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1504029491}
   m_SourcePrefab: {fileID: 100100000, guid: 1c05f7d089230664eaaf2a6aa46c3293, type: 3}
 --- !u!1 &705507993
 GameObject:
@@ -657,6 +663,42 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0.082, z: 0}
+--- !u!1 &1157673947 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3835656371640308768, guid: 9a8e41967bc72454bac3742c942c9473, type: 3}
+  m_PrefabInstance: {fileID: 133218622}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1157673951
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1157673947}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a4d30e3c2cd1e9c4ea196d7dca83aa5d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::NewMonoBehaviourScript
+  rotationSpeedY: 360
+--- !u!1 &1504029487 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1716599351703249949, guid: 1c05f7d089230664eaaf2a6aa46c3293, type: 3}
+  m_PrefabInstance: {fileID: 188957509}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1504029491
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1504029487}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a4d30e3c2cd1e9c4ea196d7dca83aa5d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::NewMonoBehaviourScript
+  rotationSpeedY: 360
 --- !u!1 &1741420321 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8926141046239171556, guid: 1c05f7d089230664eaaf2a6aa46c3293, type: 3}
