@@ -132,7 +132,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 20914830}
   serializedVersion: 5
-  m_Mass: 500
+  m_Mass: 750
   m_LinearDamping: 0
   m_AngularDamping: 1
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -144,7 +144,7 @@ Rigidbody:
   m_ExcludeLayers:
     serializedVersion: 2
     m_Bits: 0
-  m_ImplicitCom: 1
+  m_ImplicitCom: 0
   m_ImplicitTensor: 1
   m_UseGravity: 1
   m_IsKinematic: 0
@@ -233,10 +233,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 399e6347b2794d14ba060bdfaa94d90b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TestFlightController
-  maxThrust: 20000
+  maxThrust: 15000
   pitchTorque: 6000
   rollTorque: 5000
   yawTorque: 3000
+  liftPower: 2
+  forwardDrag: 0.01
+  lateralDrag: 5
+  verticalDrag: 3
+  maxGForce: 7
+  gForceSmoothing: 0.1
 --- !u!1001 &133218622
 PrefabInstance:
   m_ObjectHideFlags: 0
