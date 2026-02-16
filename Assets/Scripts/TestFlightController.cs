@@ -132,7 +132,8 @@ public class TestFlightController : MonoBehaviour
     void OnGUI()
     {
         GUI.Label(new Rect(10, 10, 200, 20), $"Speed: {rb.linearVelocity.magnitude:F1} m/s");
-        GUI.Label(new Rect(10, 30, 200, 20), $"G-Force: {currentGForce:F2}G");
+        GUI.Label(new Rect(10, 30, 200, 20), $"Speed: {rb.linearVelocity.magnitude*2.37:F1} mph");
+        GUI.Label(new Rect(10, 50, 200, 20), $"G-Force: {currentGForce:F2}G");
 
         // Warning when approaching G-limit
         if (currentGForce > maxGForce * 0.8f)
