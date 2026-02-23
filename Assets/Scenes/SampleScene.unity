@@ -397,6 +397,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3936530254673067961, guid: 9a8e41967bc72454bac3742c942c9473, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4194228070656575158, guid: 9a8e41967bc72454bac3742c942c9473, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 6957421899572437530, guid: dab228e941b26944abe030c17d46437e, type: 3}
     - target: {fileID: 6415499556334281689, guid: 9a8e41967bc72454bac3742c942c9473, type: 3}
       propertyPath: m_Name
       value: air_Biplane_A
