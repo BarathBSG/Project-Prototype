@@ -1,0 +1,16 @@
+Hello and thank you for downloading the pack.
+
+The pack contains 5 low poly aircrafts models specially designed for 
+low end devices like mobile games, AR and VR projects for better experience.
+All the models are tested in Unity3D (BRP) 2022.3.27f1. 
+
+All Models are UV mapped and sharing the atlas texture and it is in the package. 
+
+Enjoy!
+
+Please visit for more:
+
+https://youtu.be/B6_VvFzQFuw
+https://www.behance.net/IkramBandagi
+https://www.fiverr.com/ikrambandagi?up_rollout=true
+https://www.linkedin.com/in/muhammad-ikram-a508b3107/
