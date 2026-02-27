@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d65e486e4de6e5448a8fbb43dc8756a0, type: 3}
   m_Name: Grain
   m_EditorClassIdentifier: Unity.Postprocessing.Runtime::UnityEngine.Rendering.PostProcessing.Grain
-  active: 1
+  active: 0
   enabled:
     overrideState: 1
     value: 1
@@ -55,10 +55,10 @@ MonoBehaviour:
     value: {x: 0.5, y: 0.5}
   intensity:
     overrideState: 1
-    value: 0.25
+    value: 0.086
   smoothness:
     overrideState: 1
-    value: 0.25
+    value: 0.966
   roundness:
     overrideState: 0
     value: 1
@@ -89,12 +89,12 @@ MonoBehaviour:
     overrideState: 1
     value: 1
   spectralLut:
-    overrideState: 0
-    value: {fileID: 0}
+    overrideState: 1
+    value: {fileID: 8900000, guid: 24941804827e1524eb70477f7f68a111, type: 3}
     defaultState: 1
   intensity:
-    overrideState: 0
-    value: 0
+    overrideState: 1
+    value: 0.05
   fastMode:
     overrideState: 0
     value: 0
@@ -123,7 +123,7 @@ MonoBehaviour:
     defaultState: 1
   tonemapper:
     overrideState: 1
-    value: 1
+    value: 2
   toneCurveToeStrength:
     overrideState: 0
     value: 0
@@ -151,7 +151,7 @@ MonoBehaviour:
     value: 1
   temperature:
     overrideState: 1
-    value: 20
+    value: -1.6
   tint:
     overrideState: 0
     value: 0
@@ -1427,10 +1427,10 @@ MonoBehaviour:
     value: 1
   intensity:
     overrideState: 1
-    value: 1
+    value: 5
   threshold:
     overrideState: 1
-    value: 0.9
+    value: 1
   softKnee:
     overrideState: 0
     value: 0.5
@@ -1468,13 +1468,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b77c5407dc277943b591ade9e6b18c5, type: 3}
   m_Name: LensDistortion
   m_EditorClassIdentifier: Unity.Postprocessing.Runtime::UnityEngine.Rendering.PostProcessing.LensDistortion
-  active: 1
+  active: 0
   enabled:
     overrideState: 1
     value: 1
   intensity:
-    overrideState: 0
-    value: 0
+    overrideState: 1
+    value: 37.9
   intensityX:
     overrideState: 0
     value: 1
@@ -1532,10 +1532,10 @@ MonoBehaviour:
     value: 1
   shutterAngle:
     overrideState: 0
-    value: 270
+    value: 360
   sampleCount:
-    overrideState: 0
-    value: 10
+    overrideState: 1
+    value: 4
 --- !u!114 &4130592147447211714
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -1548,7 +1548,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a34fa72bd4185749832024e9c8010bf, type: 3}
   m_Name: ScreenSpaceReflections
   m_EditorClassIdentifier: Unity.Postprocessing.Runtime::UnityEngine.Rendering.PostProcessing.ScreenSpaceReflections
-  active: 1
+  active: 0
   enabled:
     overrideState: 1
     value: 1
@@ -1585,12 +1585,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3f6f3f7c722b4544b97e3c75840aa33, type: 3}
   m_Name: AutoExposure
   m_EditorClassIdentifier: Unity.Postprocessing.Runtime::UnityEngine.Rendering.PostProcessing.AutoExposure
-  active: 1
+  active: 0
   enabled:
     overrideState: 1
     value: 1
   filtering:
-    overrideState: 0
+    overrideState: 1
     value: {x: 50, y: 95}
   minLuminance:
     overrideState: 0
@@ -1622,16 +1622,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1cb7e9e120078f43bce4f0b1be547a7, type: 3}
   m_Name: AmbientOcclusion
   m_EditorClassIdentifier: Unity.Postprocessing.Runtime::UnityEngine.Rendering.PostProcessing.AmbientOcclusion
-  active: 1
+  active: 0
   enabled:
     overrideState: 1
     value: 1
   mode:
-    overrideState: 0
-    value: 1
-  intensity:
-    overrideState: 0
+    overrideState: 1
     value: 0
+  intensity:
+    overrideState: 1
+    value: 1.57
   color:
     overrideState: 0
     value: {r: 0, g: 0, b: 0, a: 1}
@@ -1648,7 +1648,7 @@ MonoBehaviour:
     overrideState: 0
     value: -12
   thicknessModifier:
-    overrideState: 0
+    overrideState: 1
     value: 1
   zBias:
     overrideState: 0
@@ -1680,13 +1680,13 @@ MonoBehaviour:
     value: 1
   focusDistance:
     overrideState: 0
-    value: 10
+    value: 0.1
   aperture:
-    overrideState: 0
-    value: 5.6
+    overrideState: 1
+    value: 32
   focalLength:
-    overrideState: 0
-    value: 50
+    overrideState: 1
+    value: 54
   kernelSize:
     overrideState: 0
     value: 1
