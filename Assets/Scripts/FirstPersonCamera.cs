@@ -23,7 +23,7 @@ public class FirstPersonCamera : MonoBehaviour
 
     void Start()
     {
-        // lock and hide cursor
+        // Lock and hide cursor (seems to only work when I click on the screen)
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
 

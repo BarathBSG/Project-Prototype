@@ -8,12 +8,12 @@ public class HorizonLockedCamera : MonoBehaviour
 
     void LateUpdate()
     {
-        //follow plane position
+        // Follow plane position
         Vector3 desiredPosition = target.position + target.forward * offset.z + Vector3.up * offset.y;
 
         transform.position = Vector3.Lerp(transform.position, desiredPosition, smoothSpeed * Time.deltaTime);
 
-        //look at plane, stay upright
+        // Look at plane, stay upright
         Vector3 lookDirection = target.position - transform.position;
         transform.rotation = Quaternion.LookRotation(lookDirection, Vector3.up);
     }

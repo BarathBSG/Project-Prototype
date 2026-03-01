@@ -11,13 +11,12 @@ public class PropellerSpin : MonoBehaviour
     public float maxAircraftSpeed = 30f;     // m/s
 
     [Header("Aircraft Rigidbody (to get speed)")]
-    public Rigidbody aircraftRigidbody;      // Drag the aircraft's Rigidbody here
+    public Rigidbody aircraftRigidbody;      // Aircraft rigidbody needed here
 
     private float currentRotationSpeed;
 
     void Start()
     {
-        // Auto-find aircraft if not assigned
         if (aircraftRigidbody == null)
         {
             // Try to find rigidbody in parent hierarchy
@@ -37,7 +36,7 @@ public class PropellerSpin : MonoBehaviour
             // Get aircraft speed
             float aircraftSpeed = aircraftRigidbody.linearVelocity.magnitude;
 
-            // Map speed (0-30 m/s) to rotation speed
+            // Map speed to rotation speed
             float speedRatio = Mathf.Clamp01(aircraftSpeed / maxAircraftSpeed);
             currentRotationSpeed = Mathf.Lerp(minRotationSpeed, maxRotationSpeed, speedRatio);
 

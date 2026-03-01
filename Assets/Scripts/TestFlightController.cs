@@ -18,14 +18,14 @@ public class TestFlightController : MonoBehaviour
     public float yawTorque = 3000f;
 
     [Header("Aerodynamics")]
-    public float liftPower = 2f;
-    public float forwardDrag = 0.01f;      // forward drag
-    public float lateralDrag = 5f;         // sideways drag
-    public float verticalDrag = 3f;        // up/down drag (need these so plane doesn't rotate but still travel in 1 direction)
+    public float liftPower = 1f;
+    public float forwardDrag = 0.1f;      // Forward drag
+    public float lateralDrag = 5f;         // Sideways drag
+    public float verticalDrag = 3f;        // Up/down drag (need these so plane doesn't rotate but still travel in 1 direction)
 
     [Header("Stall Settings")]
-    public float stallAngle = 15f;          // AoA where stall begins
-    public float criticalStallAngle = 20f;  // Full stall angle
+    public float stallAngle = 15f;          // Angle of attack where stall begins
+    public float criticalStallAngle = 20f;  // 100% stall angle
     public float minStallSpeed = 20f;       // Minimum speed before stall (m/s)
     public float stallLiftReduction = 0.9f; // How much lift is lost at full stall
     public float stallControlReduction = 0.8f; // Control reduction during stall
@@ -38,7 +38,7 @@ public class TestFlightController : MonoBehaviour
     public float maxGForce = 5f;           // G-force limiter so you cant pull way too hard
     public float gForceSmoothing = 0.1f;
 
-    private float currentGForce = 1f;      //base g-force (atmospheric)
+    private float currentGForce = 1f;      // Base g-force (atmospheric = 1G)
     private Vector3 lastVelocity;
 
     // Stall variables
@@ -86,7 +86,7 @@ public class TestFlightController : MonoBehaviour
         }
         else
         {
-            // Reset stall when grounded
+            // Reset stall and make it impossible when grounded
             stallFactor = 0f;
             isStalling = false;
             currentAoA = 0f;
@@ -140,27 +140,27 @@ public class TestFlightController : MonoBehaviour
 
     void ApplyAerodynamicDrag()
     {
-        // get velocity
+        // Get velocity
         Vector3 localVelocity = transform.InverseTransformDirection(rb.linearVelocity);
         float speed = rb.linearVelocity.magnitude;
 
-        // forward/backward drag
+        // Forward/backward drag
         float forwardDragForce = localVelocity.z * localVelocity.z * Mathf.Sign(localVelocity.z) * forwardDrag;
 
-        // lateral drag (prevents sliding sideways)
+        // Lateral drag (prevents sliding sideways)
         float lateralDragForce = localVelocity.x * localVelocity.x * Mathf.Sign(localVelocity.x) * lateralDrag;
 
-        // vertical drag (prevents unrealistic vertical movement)
+        // Vertical drag (prevents unrealistic vertical movement)
         float verticalDragForce = localVelocity.y * localVelocity.y * Mathf.Sign(localVelocity.y) * verticalDrag;
 
-        // apply forward/back, left/right, up/down drag
+        // Apply forward/back, left/right, up/down drag
         Vector3 dragForce = new Vector3(-lateralDragForce, -verticalDragForce, -forwardDragForce);
         rb.AddRelativeForce(dragForce * speed);
     }
 
     void ApplyControlInputs()
     {
-        // calculate G-force limit (reduces control at high Gs)
+        // Calculate G-force limit (reduces control at high Gs)
         float gLimiter = Mathf.Clamp01(1f - ((currentGForce - (maxGForce * 0.9f)) / (maxGForce * 0.4f)));
         gLimiter = gLimiter * gLimiter * gLimiter;
         gLimiter = Mathf.Max(gLimiter, 0.0f); // always allow at least 1% control (but might change to introduce black-out or red-out simulation)
@@ -168,13 +168,13 @@ public class TestFlightController : MonoBehaviour
         // Stall control reduction
         float stallControlMultiplier = isGrounded ? 1f : (1f - (stallFactor * stallControlReduction));
 
-        // pitch (g-limited)
+        // Pitch (g-limited)
         rb.AddRelativeTorque(Vector3.right * moveInput.y * pitchTorque * gLimiter);
 
-        // roll (g-limited)
+        // Roll (g-limited)
         rb.AddRelativeTorque(Vector3.forward * -moveInput.x * rollTorque * gLimiter);
 
-        // yaw (not g-limited)
+        // Yaw (not g-limited) (yaw control not actually implemented yet so this doesn't matter)
         rb.AddRelativeTorque(Vector3.up * yawInput * yawTorque);
     }
 
@@ -191,7 +191,7 @@ public class TestFlightController : MonoBehaviour
             // Angle between aircraft nose and velocity direction
             currentAoA = Vector3.Angle(forward, velocityDirection);
 
-            // Check if velocity is above or below aircraft (for proper AoA sign)
+            // Check if velocity is pointed above or below aircraft (for proper AoA sign)
             float verticalComponent = Vector3.Dot(transform.up, velocityDirection);
             if (verticalComponent < 0)
                 currentAoA = -currentAoA;
@@ -204,7 +204,7 @@ public class TestFlightController : MonoBehaviour
         // Calculate stall factor based on AoA and speed
         if (Mathf.Abs(currentAoA) > stallAngle || speed < minStallSpeed)
         {
-            // Calculate how deep into stall we are
+            // Calculate how deep into stall the plane is
             float aoaStallFactor = Mathf.InverseLerp(stallAngle, criticalStallAngle, Mathf.Abs(currentAoA));
             float speedStallFactor = Mathf.InverseLerp(minStallSpeed, minStallSpeed * 0.5f, speed);
 
@@ -229,7 +229,7 @@ public class TestFlightController : MonoBehaviour
             float noseDropTorque = stallFactor * pitchTorque * 0.5f;
             rb.AddRelativeTorque(Vector3.right * noseDropTorque);
 
-            // Optional: Add buffeting effect (random shaking)
+            // Buffeting effect (doesn't work, not sure why, need to debug later)
             if (stallFactor > 0.5f)
             {
                 Vector3 buffet = Random.insideUnitSphere * stallFactor * 500f;
@@ -240,18 +240,18 @@ public class TestFlightController : MonoBehaviour
 
     void CalculateGForce()
     {
-        // calculate acceleration
+        // Calculate acceleration
         Vector3 acceleration = (rb.linearVelocity - lastVelocity) / Time.fixedDeltaTime;
         lastVelocity = rb.linearVelocity;
 
-        // calculate G-force (1G = 9.81)
+        // Calculate G-force (1G = 9.81)
         float instantGForce = (acceleration.magnitude + 9.81f) / 9.81f;
 
-        // smoothen it aka round it out a bit
+        // Smoothen it aka round it out a bit
         currentGForce = Mathf.Lerp(currentGForce, instantGForce, gForceSmoothing);
     }
 
-    // very simple GUI for speed and g-limit, to be removed or replaced later
+    // Very simple GUI for speed and g-limit, to be removed or replaced later
     void OnGUI()
     {
         //GUI.Label(new Rect(10, 10, 200, 20), $"Speed: {rb.linearVelocity.magnitude:F1} m/s");
@@ -264,7 +264,7 @@ public class TestFlightController : MonoBehaviour
         GUI.Label(new Rect(10, 70, 200, 20), isGrounded ? "GROUNDED" : "AIRBORNE");
         GUI.color = Color.white;
 
-        // stall warning
+        // Stall warning
         if (isStalling && stallFactor >= 0.95f)
         {
             GUI.color = Color.red;
@@ -272,7 +272,7 @@ public class TestFlightController : MonoBehaviour
             GUI.color = Color.white;
         }
 
-        // warning when approaching G-limit
+        // Warning when approaching (80%) of G-limit
         if (currentGForce > maxGForce * 0.8f)
         {
             GUI.color = Color.red;
