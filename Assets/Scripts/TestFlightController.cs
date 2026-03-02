@@ -254,6 +254,9 @@ public class TestFlightController : MonoBehaviour
     // Very simple GUI for speed and g-limit, to be removed or replaced later
     void OnGUI()
     {
+        float scale = 2.0f; // scaling value for GUI since it's tiny on QHD screen without this
+        GUI.matrix = Matrix4x4.TRS(Vector3.zero, Quaternion.identity, new Vector3(scale, scale, 1));
+
         //GUI.Label(new Rect(10, 10, 200, 20), $"Speed: {rb.linearVelocity.magnitude:F1} m/s");
         GUI.Label(new Rect(10, 10, 200, 20), $"Speed: {rb.linearVelocity.magnitude*2.37:F1} mph");
         GUI.Label(new Rect(10, 30, 200, 20), $"G-Force: {currentGForce:F2}G");
