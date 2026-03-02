@@ -1,3 +1,3 @@
 # Project-Prototype
 
-Prototype Repository for Game & Mobile App Development Coursework.
+Repository of the coursework for CMP-6056B Game & Mobile App Development
